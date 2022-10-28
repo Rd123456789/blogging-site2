@@ -1,38 +1,53 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,100&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+#SubmitBtn {
+  /* background: burlywood; */
+  /* padding: 10px 18px; */
+  transition: 400ms ease;
+  border: 2px solid rgb(216, 128, 65);
+  color: rgb(197, 31, 31);
+  font-weight: bold;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#SubmitBtn:hover {
+  background: rgb(136, 82, 12);
+  color: wheat;
+}
+.styling p {
+  font-size: 16px;
+  text-decoration: underline;
+  /* margin-bottom: 24px; */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.styleSign {
+  cursor: pointer;
+  text-decoration: none;
+  /* font-style: italic; */
+  margin-left: 14px;
+  font-weight: bolder;
+  /* text-decoration: underline; */
+}
+.styleSign:hover {
+  text-decoration: underline;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.btn-signIn {
+  padding: 12px 36px;
+  background: burlywood;
 }
-
-.App-link {
-  color: #61dafb;
+.btn-signUp {
+  padding: 12px 36px;
+  background: coral;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.FormHeading {
+  font-size: 33px;
+  margin-top: 48px;
+}
+.mainForm input:focus {
+  border: 2px solid saddlebrown;
 }
