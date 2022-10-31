@@ -1,118 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,100&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+.navBar {
+  background: rgb(20, 14, 14);
+  min-height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#override {
+  font-size: 2rem;
+}
+#override2 {
+  font-size: 1rem;
+  color: #f5f5f5;
+}
+#override3 {
+  font-size: 1rem;
+}
+.menuBars {
+  margin-left: 2rem;
+  font-size: 2rem;
+  color: white;
+}
+.nav-menu {
+  background: rgb(20, 14, 14);
+  width: 256px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0%;
+  left: -100%;
+  transition: ease 850ms;
+  font-family: "Poppins", sans-serif;
+}
+.nav-menu.active {
+  left: 0%;
+  transition: ease 850ms;
+}
+.nav-text {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 8px 0px 8px 16px;
+  list-style: none;
+  line-height: 60px;
+}
+.pad {
+  padding: 4px;
+  /* font-size: 1.5rem; */
+}
+.nav-text a {
+  text-decoration: none;
+  color: #f5f5f5;
+  font-size: 18px;
+  font-weight: bolder;
+  width: 95%;
+  height: 100%;
+  align-items: center;
+  padding: 0px 16px;
+  border-radius: 4px;
+}
+.nav-text a:hover {
+  background: rgb(64, 64, 241);
+}
+.nav-menu-items {
+  width: 100%;
+}
+.white {
+  margin-right: 2rem;
+  padding: 8px;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,100&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-  
-}
-.navBar{
-    background: rgb(20, 14, 14);
-    height: 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  
-}
-.menuBars{
-    margin-left: 2rem;
-    font-size: 2rem;
-    color: white;
-  
+  text-decoration: none;
 
+  color: #f5f5f5;
+}
 
+.white:hover {
+  background: rgb(64, 64, 241);
+  border-radius: 4px;
+  color: white;
 }
-.nav-menu{
-    background: rgb(20, 14, 14);
-    width: 256px;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    top: 0%;
-    left: -100%;
-    transition: ease 850ms;
-    font-family: 'Poppins', sans-serif;
+.white span:hover {
 }
-.nav-menu.active{
-    left: 0%;
-    transition: ease 850ms;
+.navbar-toggle {
+  background: rgb(20, 14, 14);
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
-.nav-text{
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    padding: 8px 0px 8px 16px;
-    list-style: none;
-    line-height: 60px;
-    
+.sideItem {
+  margin-left: 16px;
 }
-.nav-text a{
-    text-decoration: none;
-    color:#f5f5f5;
-    font-size: 18px;
-    font-weight: bolder;
-    width: 95%;
-    height: 100%;
-    align-items: center;
-    padding: 0px 16px;
-    border-radius: 4px;
+.profileLogo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* font-size: 1rem; */
 }
-.nav-text a:hover{
-    background: rgb(64, 64, 241);
+.rightDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.nav-menu-items{
-    width: 100%;
-    
+p {
+  margin-bottom: 0px;
+}
 
+@media screen and (max-width: 750px) {
+  .nav-menu {
+    width: 156px;
+  }
+  .white{
+    margin-right: 1rem;
+  }
+  .sideItem {   
+    margin-left: 4px;
+  }
+  .menuBars{
+    margin-left: 1rem;
+  }
+  .nav-text a {
+    padding: 0px 4px;
+    font-size: 12px;
+  }
 
-}
-.white{
-    /* color: white; */
-    margin-right: 2rem;
-    font-size: 2rem;
-    /* padding: 0px 16px; */
-    text-decoration: none;
-    /* align-items: center; */
-    color:#f5f5f5;
-
-}
-.white span{
-    /* align-items: center; */
-    /* padding: 0px 16px; */
-    padding: 10px 10px;
-    
-   
-}
-.white:hover{
-    background: rgb(64, 64, 241);
-    border-radius: 4px;
-    color: white;
-}
-.white span:hover{
-    
-   
-
-}
-.navbar-toggle{
-    background: rgb(20, 14, 14);
-    width: 100%;
-    height: 80px;
-    display: flex;
-    justify-content: start;
-    align-items: center ;
-}
-.sideItem{
-    margin-left:16px;
-}
-@media screen and (max-width:750px) {
-    .nav-menu{
-        width: 156px;
-    }
-    .sideItem{
-        margin-left: 4px;
-    }
-    .nav-text a{
-        padding: 0px 4px;
-        font-size: 12px;
-    }
+  .menuBars {
+    font-size: 1.5rem;
+  }
+  #override{
+    font-size: 1.5rem;
+  }
+  #override2{
+    font-size: 12px;
+  }
+  #override3{
+    font-size: 12px;
+  }
 }

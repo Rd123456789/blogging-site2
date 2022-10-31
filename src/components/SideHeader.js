@@ -15,12 +15,12 @@ export const SideBarData = [
     icon: <AiIcon.AiFillHome />,
     classNa: "nav-text",
   },
-  {
-    title: "Create",
-    pathtoWhere: "/create",
-    icon: <mdIcon.MdCreate />,
-    classNa: "nav-text",
-  },
+  // {
+  //   title: "Create",
+  //   pathtoWhere: "/create",
+  //   icon: <mdIcon.MdCreate />,
+  //   classNa: "nav-text",
+  // },
 
   {
     title: "About",

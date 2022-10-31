@@ -1,0 +1,48 @@
+.container-fluid{
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.head{
+    display: block;
+}
+.marginLeft{
+    margin-left: 33px;
+}
+.form-check{
+    padding: 0px;
+}
+.styleFile{
+    border: 2px solid #ced4da;
+    border-collapse: collapse;
+    border-radius: 5px;
+
+    padding: 2px;
+}
+#marginr{
+    margin-right: 32px;
+}
+#marginrc{
+    margin-right: 12px;
+}
+.btnStyle{
+    background: burlywood;
+}
+.btnStyle:hover{
+    background: rgb(136, 82, 12);
+    color: white;
+}
+.form-control{
+    border: 2px solid #ced4da;
+}
+.form-control:focus{
+   border:  2px solid saddlebrown;
+}
+.form-group{
+    width: 60vw;
+
+}
+.form-control-file{
+    width: 60vw;
+}
