@@ -1,11 +1,20 @@
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  serverTimestamp,
+  updateDoc,
+} from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { useEffect } from "react";
 import { React, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { storageFire } from "../firebaseconf";
+import { db, storageFire } from "../firebaseconf";
 import "./crEdit.css";
 
-function AddEdit() {
+function AddEdit({ user }) {
   const initialState = {
     title: "",
     imgUrl: "",
@@ -28,6 +37,8 @@ function AddEdit() {
   const [fileState, setFileState] = useState(null);
   const [progress, setProgress] = useState(null);
   const { title, desc, category, imgUrl } = formState;
+  const { id } = useParams();
+  const navigator_ref = useNavigate();
   useEffect(() => {
     let uploadFile = () => {
       let storageRef = ref(storageFire, fileState.name);
@@ -60,7 +71,7 @@ function AddEdit() {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            toast.info("Image upload to firebase successfully");
+            toast.info("Image Uploaded Successfully!");
             setFormState((prev) => ({ ...prev, imgUrl: downloadURL }));
             // console.log(imgUrl);
           });
@@ -70,21 +81,79 @@ function AddEdit() {
     fileState && uploadFile();
   }, [fileState]);
 
-  const handleChange = () => {};
+  const handleChange = (event) => {
+    setFormState({ ...formState, [event.target.name]: event.target.value });
+  };
+  const handleCat = (event) => {
+    setFormState({ ...formState, category: event.target.value });
+  };
+  useEffect(() => {
+    id && getBlogDetails();
+  }, [id]);
+
+  const getBlogDetails = async () => {
+    const docRef = doc(db, "BlogsCollection", id);
+    const snapshot = await getDoc(docRef);
+    if (snapshot.exists()) {
+      setFormState({ ...snapshot.data() });
+    } else {
+      console.log("error!!!");
+    }
+  };
+  const handleChangeArea = (e) => {
+    setFormState({ ...formState, desc: e.target.value });
+  };
+  // console.log(formState);
+  const handleSub = async (event) => {
+    event.preventDefault();
+
+    if (category && title && desc && imgUrl) {
+      if (!id) {
+        try {
+          await addDoc(collection(db, "BlogsCollection"), {
+            ...formState,
+            timeStamp: serverTimestamp(),
+            author: user?.displayName,
+            userID: user?.uid,
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      } else {
+        try{
+          await updateDoc(doc(db,'BlogsCollection',id),{
+            ...formState,
+            timeStamp:serverTimestamp(),
+            author:user?.displayName,
+            userID:user?.uid
+          })
+        }
+        catch(error){
+          console.log(error);
+        }
+      }
+
+      navigator_ref("/");
+    } else {
+      toast.error("All Fields are Required!");
+    }
+  };
 
   return (
     <>
       <div className="row d-flex ">
         <center>
           <div className="headDiv">
-            <h2 className="head mx-center mb-3 mt-5">Create Blog</h2>
+            <h2 className="head mx-center mb-3 mt-5">
+              {id ? "Edit Blog" : "Create Blog"}
+            </h2>
           </div>
         </center>
         <div
           className="container-fluid d-flex justify-content-center align-item-center"
           id="mainId"
         >
-          <form>
+          <form onSubmit={handleSub}>
             <div className="form-group">
               <input
                 className="form-control mb-3"
@@ -98,8 +167,9 @@ function AddEdit() {
                 className="form-control mb-3"
                 id="txtArea"
                 rows="4"
+                name="description"
                 value={desc}
-                onChange={handleChange}
+                onChange={handleChangeArea}
                 placeholder="Description"
               ></textarea>
 
@@ -111,8 +181,11 @@ function AddEdit() {
                   className="form-control"
                   id="selectOp"
                   value={category}
-                  onChange={handleChange}
+                  onChange={handleCat}
                 >
+                  <option value="Please Select Category" defaultChecked>
+                    Please Select Category
+                  </option>
                   {categoryOption.map((option, index) => (
                     <option value={option || ""} key={index}>
                       {option}
@@ -135,7 +208,7 @@ function AddEdit() {
                 disabled={progress !== null && progress < 100}
               >
                 {/* <p>{iteimgUrl}</p> */}
-                Create
+                {id ? "Update" : "Create"}
               </button>
             </center>
           </form>

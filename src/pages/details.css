@@ -1,0 +1,34 @@
+.single{
+    height: 80vh;
+    width: 100vw;
+}
+.blog-title-box{
+    height: 60vh;
+    width: 100vw;
+    background-position: center center;
+    background-size: cover;
+
+  
+
+}
+.style{
+
+}
+#classCat{
+    padding: 13px;
+    background: rgb(92, 92, 148);
+    width: 166px;
+    color: whitesmoke;
+}
+.blog-title{
+    padding: 12px 66px ;
+}
+
+@media screen and (max-width: 1110px) {
+    .blog-title{
+        padding: 12px 12px;
+    }
+    .my-center{
+        font-size: 8px;
+    }
+}
