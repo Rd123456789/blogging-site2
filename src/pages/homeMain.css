@@ -12,19 +12,18 @@
 #marginZero {
   padding: 66px;
 }
-
+.borderIt {
+  box-shadow: 5px 5px 8px 5px #888888;
+}
 
 .buttonPad {
   padding: 0px;
   margin: 0px;
 }
 .borderIt {
-  padding: 66px;
+  padding: 13px;
 }
-.cardImg {
-  height: 233px;
-  width: 266px;
-}
+.card-img{}
 .mainCont {
   margin-bottom: 33px;
   display: flex;
@@ -44,16 +43,22 @@
   background: saddlebrown;
   color: wheat;
 }
-@media screen and (max-width: 1110px) {
+.title{
+  margin-top: 13px;
+}
+body {
+}
+.borderIt {
+  background: rgb(255, 229, 229);
+}
+@media screen and (max-width: 710px) {
   #marginZero {
     /* margin-left: 66px; */
   }
   .borderIt {
-    border: 1px solid saddlebrown;
-
     padding: 13px;
   }
-  .btn-read{
+  .btn-read {
     padding: 6px 18px;
   }
   .cardImg {
@@ -61,6 +66,6 @@
     width: 166px;
   }
   .title {
-    /* margin-top: 33px; */
+    margin-top: 33px;
   }
 }
