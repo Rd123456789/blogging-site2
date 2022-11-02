@@ -22,7 +22,7 @@ function HomeComponent({ blogs, user, handleDelete }) {
               </div>
             </div>
           </div>
-          <div className="col-md-7 col-12 col-lg-6">
+          <div className="col-md-7 col-12 col-lg-6 mx-1 mx-lg-0 mx-md-0" >
             <div className="text-start">
               <h2 className="title ">{item.title}</h2>
               <span className="meta-info">

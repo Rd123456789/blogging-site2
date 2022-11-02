@@ -28,6 +28,11 @@
   margin-left: 2rem;
   font-size: 2rem;
   color: white;
+  border: 2px solid transparent;
+}
+.menuBars:focus{
+  border: 2px solid white;
+  border-radius: 4px;
 }
 .nav-menu {
   background: rgb(20, 14, 14);
