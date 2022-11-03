@@ -5,9 +5,12 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../firebaseconf";
 import "../pages/details.css";
+import '../App.css'
+import ClipLoader from "react-spinners/ClipLoader";
 
 const DetailsComp = () => {
   const { id } = useParams();
+  const [loading,setLoding] = useState(true)
   const [blogDetails, setBlogDetails] = useState(null);
   useEffect(() => {
     id && getBlogDetail();
@@ -16,7 +19,24 @@ const DetailsComp = () => {
     const docRef = doc(db, "BlogsCollection", id);
     const blogDet = getDoc(docRef);
     setBlogDetails((await blogDet).data());
+    setLoding(false)
   };
+  if (loading) {
+    return (
+      <>
+        <center>
+          <ClipLoader
+            loading={loading}
+            className="text-center load"
+            size={150}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </center>
+      </>
+    );
+  }
+
   return (
     <div className="single">
       <div className="blog-title">

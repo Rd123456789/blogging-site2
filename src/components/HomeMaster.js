@@ -8,9 +8,12 @@ import {
   where,
 } from "firebase/firestore";
 import React, { useState, useEffect } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 import { db } from "../firebaseconf";
 import { toast } from "react-toastify";
 import HomeComponent from "../pages/HomeComponent";
+import Spinner from "./Spinner";
+import '../App.css'
 
 function HomeMaster({ userLogin }) {
   const [loading, setLoading] = useState(true);
@@ -39,21 +42,39 @@ function HomeMaster({ userLogin }) {
       unsub();
     };
   }, []);
+  if (loading) {
+    return (
+      <>
+        <center>
+          <ClipLoader
+            loading={loading}
+            className="text-center load"
+            size={150}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </center>
+      </>
+    );
+  }
 
-  const handleDelete=async(id)=>{
-    if(window.confirm("This will Delete Your blog Permently!")){
-      try{
-        await deleteDoc(doc(db,'BlogsCollection',id))
-      }
-      catch(error){
-          console.log(error);
+  const handleDelete = async (id) => {
+    if (window.confirm("This will Delete Your blog Permently!")) {
+      try {
+        await deleteDoc(doc(db, "BlogsCollection", id));
+      } catch (error) {
+        console.log(error);
       }
     }
-  }
+  };
   return (
     <>
-      <HomeComponent blogs={blogs} handleDelete={handleDelete} user={userLogin}/>
-    </> 
+      <HomeComponent
+        blogs={blogs}
+        handleDelete={handleDelete}
+        user={userLogin}
+      />
+    </>
   );
 }
 

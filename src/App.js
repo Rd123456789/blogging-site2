@@ -22,6 +22,7 @@ import { useEffect } from "react";
 import { auth } from "./firebaseconf";
 import { signOut } from "firebase/auth";
 import HomeMaster from "./components/HomeMaster";
+import JustComponent from "./pages/JustComponent";
 
 function App() {
   const [user, setUserIn] = useState(null);
@@ -46,8 +47,8 @@ function App() {
       <Headers user={user} handleLogout={handleLogout} />
       <ToastContainer position="top-center" />
       <Routes>
-        <Route path="/" element={<HomeMaster userLogin={user}/>} />
-        <Route path="/detail/:id" element={<DetailsComp/>} />
+        <Route path="/" element={<HomeMaster userLogin={user} />} />
+        <Route path="/detail/:id" element={<DetailsComp />} />
         <Route
           path="/create"
           element={user?.uid ? <AddEdit user={user} /> : <Navigate to="/" />}

@@ -5,6 +5,9 @@
   margin: 0;
   padding: 0;
 }
+.load{
+  margin:25vh 0vh;
+}
 #SubmitBtn {
   /* background: burlywood; */
   /* padding: 10px 18px; */

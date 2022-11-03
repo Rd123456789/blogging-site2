@@ -9,14 +9,13 @@ import {getAuth} from 'firebase/auth'
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyARkgngEKf5Y5Hvr0wSDinQ2RvV3wCsf8I",
-  authDomain: "bloganother-a5a18.firebaseapp.com",
-  databaseURL: "https://bloganother-a5a18-default-rtdb.firebaseio.com",
-  projectId: "bloganother-a5a18",
-  storageBucket: "bloganother-a5a18.appspot.com",
-  messagingSenderId: "575983305429",
-  appId: "1:575983305429:web:a39ba6c6a284bbbfd9d85c",
-  measurementId: "G-J0CHNGPJVX"
+  apiKey: "AIzaSyDzXsARoBxc_j2074kEjfKJESknDZ0b8Ns",
+  authDomain: "reactblog-6f1c2.firebaseapp.com",
+  projectId: "reactblog-6f1c2",
+  storageBucket: "reactblog-6f1c2.appspot.com",
+  messagingSenderId: "742435480575",
+  appId: "1:742435480575:web:716f6b16aa9565ed4b3dca",
+  measurementId: "G-CW2P4N87LL"
   };
   
 

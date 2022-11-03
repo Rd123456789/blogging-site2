@@ -1,33 +1,37 @@
-import React from 'react'
-import { FirebaseStorage } from 'firebase/storage'
-import * as firebase from 'firebase'
+import React from "react";
+import { FirebaseStorage } from "firebase/storage";
+
+import { useState, CSSProperties } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function JustComponent() {
-    storageRef.child('images/.jpg').getDownloadURL()
-  .then((url) => {
-    // `url` is the download URL for 'images/stars.jpg'
+  const CSSProperties = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "red",
+  };
 
-    // This can be downloaded directly:
-    var xhr = new XMLHttpRequest();
-    xhr.responseType = 'blob';
-    xhr.onload = (event) => {
-      var blob = xhr.response;
-    };
-    xhr.open('GET', url);
-    xhr.send();
+  let [loading, setLoading] = useState(true);
+  let [color, setColor] = useState("#ffffff");
 
-    // Or inserted into an <img> element
-    var img = document.getElementById('myimg');
-    img.setAttribute('src', url);
-  })
-  .catch((error) => {
-    // Handle any errors
-  });
   return (
-    <img src="" alt="" id='myimg'/>
-   
+    <div className="sweet-loading">
+      <button onClick={() => setLoading(!loading)}>Toggle Loader</button>
+      <input
+        value={color}
+        onChange={(input) => setColor(input.target.value)}
+        placeholder="Color of the loader"
+      />
 
-  )
+      <ClipLoader
+        color={color}
+        loading={loading}
+        size={150}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    </div>
+  );
 }
 
-export default JustComponent
+export default JustComponent;

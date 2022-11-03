@@ -24,9 +24,18 @@ const Headers = ({ user, handleLogout }) => {
         <IconContext.Provider value={{ color: "WHITE" }}>
           <div className="navBar">
             <div className="leftDiv">
-              <Link className="menuBars" onClick={showSideBar}>
-                <FaIcon.HiBars3CenterLeft />
-              </Link>
+              <div className="row justify-content-start d-flex align-items-center">
+                <div className="col-lg-5 col-4 col-md-5">
+                  <Link className="menuBars" onClick={showSideBar}>
+                    <FaIcon.HiBars3CenterLeft />
+                  </Link>
+                </div>
+                <div className="div col-lg-7 col-8 col-md-7">
+                  <Link to={"/"} className="div">
+                    BlogMatters<sup>&copy;</sup>
+                  </Link>
+                </div>
+              </div>
             </div>
             <div className="rightDiv">
               {userId ? (

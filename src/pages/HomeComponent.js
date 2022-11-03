@@ -5,6 +5,7 @@ import { except } from "../utility";
 import * as AiIcon from "react-icons/ai";
 import * as FiIcon from "react-icons/fi";
 import { useEffect } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function HomeComponent({ blogs, user, handleDelete }) {
   const userId = user?.uid;
@@ -12,6 +13,7 @@ function HomeComponent({ blogs, user, handleDelete }) {
 
   return (
     <div className="pad mx-lg-5 mt-5">
+     
       {blogs?.map((item) => (
         <div className="row pb-4 mx-5 mb-5 borderIt" key={item.id}>
           <div className="col-md-5 col-12 col-lg-6">
@@ -49,14 +51,14 @@ function HomeComponent({ blogs, user, handleDelete }) {
                   <AiIcon.AiTwotoneDelete
                     name="trash"
                     style={{ marginRight: "15px", cursor: "pointer" }}
-                    className="StyleIt"
+                    className="StyleIt del"
                     onClick={() => handleDelete(item.id)}
                   />
                   <Link to={`/update/${item.id}`}>
                     <AiIcon.AiTwotoneEdit
                       name="edit"
                       style={{ cursor: "pointer" }}
-                      className="StyleIt"
+                      className="StyleIt edit"
                     />
                   </Link>
                 </div>

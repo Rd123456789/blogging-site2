@@ -14,6 +14,7 @@ import { toast } from "react-toastify";
 import { db, storageFire } from "../firebaseconf";
 import "./crEdit.css";
 
+
 function AddEdit({ user }) {
   const initialState = {
     title: "",
@@ -34,14 +35,25 @@ function AddEdit({ user }) {
     "Business",
   ];
   const [formState, setFormState] = useState(initialState);
+
+  console.log();
   const [fileState, setFileState] = useState(null);
   const [progress, setProgress] = useState(null);
   const { title, desc, category, imgUrl } = formState;
   const { id } = useParams();
   const navigator_ref = useNavigate();
+
+  const uid = () =>{
+    return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+      (c ^ crypto.getRandomValues(new Uint8Array(1))[0] && 15 >> c / 4).toString(16)
+    );
+  }
+  
+ 
   useEffect(() => {
+    
     let uploadFile = () => {
-      let storageRef = ref(storageFire, fileState.name);
+      let storageRef = ref(storageFire,uid()+fileState.name);
       let uploadTask = uploadBytesResumable(storageRef, fileState);
 
       uploadTask.on(
@@ -73,10 +85,11 @@ function AddEdit({ user }) {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             toast.info("Image Uploaded Successfully!");
             setFormState((prev) => ({ ...prev, imgUrl: downloadURL }));
-            // console.log(imgUrl);
+            console.log(imgUrl);
           });
         }
       );
+      
     };
     fileState && uploadFile();
   }, [fileState]);
@@ -149,6 +162,7 @@ function AddEdit({ user }) {
             </h2>
           </div>
         </center>
+       
         <div
           className="container-fluid d-flex justify-content-center align-item-center"
           id="mainId"
@@ -198,7 +212,12 @@ function AddEdit({ user }) {
                 type="file"
                 className="form-control-file styleFile mb-5"
                 id="fileUpload"
-                onChange={(e) => setFileState(e.target.files[0])}
+                onChange={(e) => {
+         
+                  setFileState(e.target.files[0])}}
+                  onClick ={()=>{
+                   
+                  }}
               />
             </div>
             <center>

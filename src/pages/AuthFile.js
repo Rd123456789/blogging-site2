@@ -34,28 +34,25 @@ const AuthFile = () => {
           auth,
           email,
           password
-        )
-        .catch((error) => {
+        ).catch((error) => {
           // var errorCode = error.code;
           // var errorMessage = error.message;
-          toast.error('Wrong Password')
-        });;
+          toast.error("Wrong Password");
+        });
 
-        // setUser(user);
-        // setActive("home");
         console.log("work");
         naviGate("/");
       } else {
         return toast.error("All fields are mandatory to fill");
       }
     } else {
-      if (password !== confirmPassword) {
-        toast.error("Passwords Should Match!");
-      }
-      if (firstName && lastName && email && password) {
+      if (firstName && lastName && email && password && confirmPassword) {
         if (password.length < 6) {
-          toast.error("Password Should Contain 6 Letters!");
+          return toast.error("Password Should Contain 6 Letters!");
+        } else if (password !== confirmPassword) {
+          return toast.error("Passwords Should Match!");
         }
+
         const { user } = await createUserWithEmailAndPassword(
           auth,
           email,
